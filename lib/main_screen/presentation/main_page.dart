@@ -1,5 +1,4 @@
 import 'package:budgetbuddy/main_screen/presentation/categories_widget.dart';
-import 'package:budgetbuddy/main_screen/presentation/logs_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 
@@ -11,27 +10,18 @@ class MainPage extends HookWidget {
     final mode = useState(true);
     void onPressed() => mode.value = !mode.value;
     return Scaffold(
+      extendBody: true,
       appBar: AppBar(
-        backgroundColor: Colors.transparent,
         elevation: 0,
+        backgroundColor: Colors.transparent,
         centerTitle: true,
         title: const Text(
           'BudgetBuddy',
-          textAlign: TextAlign.center,
         ),
       ),
-      body: Column(
-        children: [
-          CategoriesWidget(
-            onPressed: onPressed,
-            isExpenseMode: mode.value,
-          ),
-          Expanded(
-            child: LogsWidget(
-              isExpenseMode: mode.value,
-            ),
-          ),
-        ],
+      body: CategoriesWidget(
+        onPressed: onPressed,
+        isExpenseMode: mode.value,
       ),
     );
   }

@@ -19,6 +19,7 @@ class EditOrDeleteCategory extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final notifier = ref.read(categoryNotifierProvider.notifier);
     return AppDialog(
+      isLong: false,
       spaceAround: false,
       children: [
         ElevatedButton(
@@ -31,7 +32,6 @@ class EditOrDeleteCategory extends ConsumerWidget {
                 isExpenseMode: isExpenseMode,
               ),
             );
-            AutoRouter.of(context).pop();
           },
           child: const Text('Edit Category'),
         ),

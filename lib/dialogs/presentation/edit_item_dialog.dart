@@ -40,6 +40,7 @@ class EditCategoryDialog extends HookWidget {
       [controller],
     );
     return AppDialog(
+      isLong: false,
       spaceAround: true,
       children: [
         const Text(

@@ -40,36 +40,33 @@ class _LogsWidgetState extends ConsumerState<LogsWidget> {
               logList.add(log);
             }
           }
-          return Padding(
-            padding: const EdgeInsets.only(top: 12.0),
-            child: DecoratedBox(
-              decoration: BoxDecoration(
-                border: Border.all(color: Colors.grey.shade800),
-              ),
-              child: ListView.separated(
-                physics: const BouncingScrollPhysics(),
-                itemCount: logList.length,
-                shrinkWrap: true,
-                itemBuilder: (context, index) => ListTile(
-                  trailing: Text(
-                    widget.isExpenseMode
-                        ? '-\$${logList[index].value.toString()}'
-                        : '+\$${logList[index].value.toString()}',
-                    style: TextStyle(
-                      color: widget.isExpenseMode ? Colors.red : Colors.green,
-                      fontSize: 18
-                    ),
-                  ),
-                  title: Text(
-                    logList[index].details,
-                    style: const TextStyle(
-                      fontSize: 18
-                    ),
+          return DecoratedBox(
+            decoration: BoxDecoration(
+              border: Border.all(color: Colors.grey.shade800),
+            ),
+            child: ListView.separated(
+              physics: const BouncingScrollPhysics(),
+              itemCount: logList.length,
+              shrinkWrap: true,
+              itemBuilder: (context, index) => ListTile(
+                trailing: Text(
+                  widget.isExpenseMode
+                      ? '-\$${logList[index].value.toString()}'
+                      : '+\$${logList[index].value.toString()}',
+                  style: TextStyle(
+                    color: widget.isExpenseMode ? Colors.red : Colors.green,
+                    fontSize: 18
                   ),
                 ),
-                separatorBuilder: (BuildContext context, int index) =>
-                    const Divider(),
+                title: Text(
+                  logList[index].details,
+                  style: const TextStyle(
+                    fontSize: 18
+                  ),
+                ),
               ),
+              separatorBuilder: (BuildContext context, int index) =>
+                  const Divider(),
             ),
           );
         });
