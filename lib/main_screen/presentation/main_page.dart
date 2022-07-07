@@ -1,4 +1,5 @@
 import 'package:budgetbuddy/main_screen/presentation/categories_widget.dart';
+import 'package:budgetbuddy/main_screen/presentation/logs_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 
@@ -19,9 +20,17 @@ class MainPage extends HookWidget {
           'BudgetBuddy',
         ),
       ),
-      body: CategoriesWidget(
-        onPressed: onPressed,
-        isExpenseMode: mode.value,
+      body: Column(
+        children: [
+          CategoriesWidget(
+            onPressed: onPressed,
+            isExpenseMode: mode.value,
+          ),
+          const SizedBox(height: 30),
+          Expanded(
+            child: LogsWidget(isExpenseMode: mode.value),
+          ),
+        ],
       ),
     );
   }
