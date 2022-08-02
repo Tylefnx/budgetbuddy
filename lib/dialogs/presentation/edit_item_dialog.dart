@@ -107,29 +107,26 @@ class SubmitButton extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 150.0),
-      child: ElevatedButton(
-        style: ElevatedButton.styleFrom(primary: Colors.white24),
-        onPressed: () {
-          if (double.tryParse(amount) == null) {
-            ScaffoldMessenger.of(context)
-                .showSnackBar(const SnackBar(content: Text('Invalid Amount')));
-          } else {
-            ref.read(categoryNotifierProvider.notifier).updateCategory(
-                  Category(
-                    categoryName: name,
-                    initialValue: double.parse(amount),
-                    codePoint: iconCode,
-                    id: id,
-                    isExpense: isExpenseMode,
-                  ),
-                );
-            AutoRouter.of(context).pop();
-          }
-        },
-        child: const Text('Edit Category'),
-      ),
+    return ElevatedButton(
+      style: ElevatedButton.styleFrom(primary: Colors.white24),
+      onPressed: () {
+        if (double.tryParse(amount) == null) {
+          ScaffoldMessenger.of(context)
+              .showSnackBar(const SnackBar(content: Text('Invalid Amount')));
+        } else {
+          ref.read(categoryNotifierProvider.notifier).updateCategory(
+                Category(
+                  categoryName: name,
+                  initialValue: double.parse(amount),
+                  codePoint: iconCode,
+                  id: id,
+                  isExpense: isExpenseMode,
+                ),
+              );
+          AutoRouter.of(context).pop();
+        }
+      },
+      child: const Text('Edit Category'),
     );
   }
 }
