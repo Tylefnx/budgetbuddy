@@ -12,6 +12,8 @@ _$_Category _$$_CategoryFromJson(Map<String, dynamic> json) => _$_Category(
       initialValue: (json['initialValue'] as num).toDouble(),
       codePoint: json['codePoint'] as int,
       isExpense: json['isExpense'] as bool,
+      logs: (json['logs'] as List<dynamic>?)?.map((e) => e as int).toList() ??
+          const [],
     );
 
 Map<String, dynamic> _$$_CategoryToJson(_$_Category instance) =>
@@ -21,4 +23,5 @@ Map<String, dynamic> _$$_CategoryToJson(_$_Category instance) =>
       'initialValue': instance.initialValue,
       'codePoint': instance.codePoint,
       'isExpense': instance.isExpense,
+      'logs': instance.logs,
     };

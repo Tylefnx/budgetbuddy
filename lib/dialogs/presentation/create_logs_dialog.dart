@@ -119,6 +119,18 @@ class SubmitButton extends ConsumerWidget {
             ),
           );
         } else if (option == 0) {
+          final log = LogWithDate(
+            categoryId: category.id,
+            details: isExpenseMode
+                ? 'Spent: ${category.categoryName}'
+                : 'Earned: ${category.categoryName}',
+            isExpense: isExpenseMode,
+            value: double.parse(amount),
+            milliSecondsFromEpoch: DateTime.now().millisecondsSinceEpoch,
+          );
+
+          ref.read(logNotifierProvider.notifier).createLog(log);
+
           ref.read(categoryNotifierProvider.notifier).updateCategory(
                 Category(
                   id: category.id,
@@ -126,37 +138,21 @@ class SubmitButton extends ConsumerWidget {
                   initialValue: category.initialValue + double.parse(amount),
                   codePoint: category.codePoint,
                   isExpense: category.isExpense,
-                ),
-              );
-          ref.read(logNotifierProvider.notifier).createLog(
-                LogWithDate(
-                  details: isExpenseMode ? 'Spent: ${category.categoryName}' : 'Earned: ${category.categoryName}',
-                  isExpense: isExpenseMode,
-                  categoryId: category.id,
-                  value: double.parse(amount),
-                  milliSecondsFromEpoch: DateTime.now().millisecondsSinceEpoch,
+                  logs: category.logs + [log.id],
                 ),
               );
           AutoRouter.of(context).pop();
         } else if (option == 1) {
-          ref.read(categoryNotifierProvider.notifier).updateCategory(
-                Category(
-                  id: category.id,
-                  categoryName: category.categoryName,
-                  initialValue: double.parse(amount),
-                  codePoint: category.codePoint,
-                  isExpense: category.isExpense,
-                ),
-              );
-          ref.read(logNotifierProvider.notifier).createLog(
-                LogWithDate(
-                  details: 'Updated: ${category.categoryName} => ${category.initialValue} to $amount',
-                  isExpense: isExpenseMode,
-                  categoryId: category.id,
-                  value: double.parse(amount),
-                  milliSecondsFromEpoch: DateTime.now().millisecondsSinceEpoch,
-                ),
-              );
+          final log = LogWithDate(
+            categoryId: category.id,
+            details: 'Updated: ${category.categoryName}',
+            isExpense: isExpenseMode,
+            value: double.parse(amount),
+            milliSecondsFromEpoch: DateTime.now().millisecondsSinceEpoch,
+          );
+
+          ref.read(logNotifierProvider.notifier).createLog(log);
+          ref.read(logNotifierProvider.notifier).deleteLogsByDetails(amount, category);
           AutoRouter.of(context).pop();
         }
       },

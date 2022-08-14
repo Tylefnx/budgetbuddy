@@ -9,7 +9,7 @@ part of 'logs_with_dates.dart';
 _$_LogWithDate _$$_LogWithDateFromJson(Map<String, dynamic> json) =>
     _$_LogWithDate(
       id: json['id'] as int? ?? -1,
-      categoryId: json['categoryId'] as int,
+      categoryId: json['categoryId'] as int? ?? -1,
       details: json['details'] as String,
       value: (json['value'] as num).toDouble(),
       isExpense: json['isExpense'] as bool,

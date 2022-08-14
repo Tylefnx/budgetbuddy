@@ -7,7 +7,7 @@ class LogWithDate with _$LogWithDate {
   const LogWithDate._();
   const factory LogWithDate({
     @Default(-1) int id,
-    required int categoryId,
+    @Default(-1) int categoryId,
     required String details,
     required double value,
     required bool isExpense,

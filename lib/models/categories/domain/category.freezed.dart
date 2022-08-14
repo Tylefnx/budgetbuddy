@@ -25,6 +25,7 @@ mixin _$Category {
   double get initialValue => throw _privateConstructorUsedError;
   int get codePoint => throw _privateConstructorUsedError;
   bool get isExpense => throw _privateConstructorUsedError;
+  List<int> get logs => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -41,7 +42,8 @@ abstract class $CategoryCopyWith<$Res> {
       String categoryName,
       double initialValue,
       int codePoint,
-      bool isExpense});
+      bool isExpense,
+      List<int> logs});
 }
 
 /// @nodoc
@@ -59,6 +61,7 @@ class _$CategoryCopyWithImpl<$Res> implements $CategoryCopyWith<$Res> {
     Object? initialValue = freezed,
     Object? codePoint = freezed,
     Object? isExpense = freezed,
+    Object? logs = freezed,
   }) {
     return _then(_value.copyWith(
       id: id == freezed
@@ -81,6 +84,10 @@ class _$CategoryCopyWithImpl<$Res> implements $CategoryCopyWith<$Res> {
           ? _value.isExpense
           : isExpense // ignore: cast_nullable_to_non_nullable
               as bool,
+      logs: logs == freezed
+          ? _value.logs
+          : logs // ignore: cast_nullable_to_non_nullable
+              as List<int>,
     ));
   }
 }
@@ -96,7 +103,8 @@ abstract class _$$_CategoryCopyWith<$Res> implements $CategoryCopyWith<$Res> {
       String categoryName,
       double initialValue,
       int codePoint,
-      bool isExpense});
+      bool isExpense,
+      List<int> logs});
 }
 
 /// @nodoc
@@ -116,6 +124,7 @@ class __$$_CategoryCopyWithImpl<$Res> extends _$CategoryCopyWithImpl<$Res>
     Object? initialValue = freezed,
     Object? codePoint = freezed,
     Object? isExpense = freezed,
+    Object? logs = freezed,
   }) {
     return _then(_$_Category(
       id: id == freezed
@@ -138,6 +147,10 @@ class __$$_CategoryCopyWithImpl<$Res> extends _$CategoryCopyWithImpl<$Res>
           ? _value.isExpense
           : isExpense // ignore: cast_nullable_to_non_nullable
               as bool,
+      logs: logs == freezed
+          ? _value._logs
+          : logs // ignore: cast_nullable_to_non_nullable
+              as List<int>,
     ));
   }
 }
@@ -150,8 +163,10 @@ class _$_Category extends _Category {
       required this.categoryName,
       required this.initialValue,
       required this.codePoint,
-      required this.isExpense})
-      : super._();
+      required this.isExpense,
+      final List<int> logs = const []})
+      : _logs = logs,
+        super._();
 
   factory _$_Category.fromJson(Map<String, dynamic> json) =>
       _$$_CategoryFromJson(json);
@@ -167,10 +182,17 @@ class _$_Category extends _Category {
   final int codePoint;
   @override
   final bool isExpense;
+  final List<int> _logs;
+  @override
+  @JsonKey()
+  List<int> get logs {
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_logs);
+  }
 
   @override
   String toString() {
-    return 'Category(id: $id, categoryName: $categoryName, initialValue: $initialValue, codePoint: $codePoint, isExpense: $isExpense)';
+    return 'Category(id: $id, categoryName: $categoryName, initialValue: $initialValue, codePoint: $codePoint, isExpense: $isExpense, logs: $logs)';
   }
 
   @override
@@ -184,7 +206,8 @@ class _$_Category extends _Category {
             const DeepCollectionEquality()
                 .equals(other.initialValue, initialValue) &&
             const DeepCollectionEquality().equals(other.codePoint, codePoint) &&
-            const DeepCollectionEquality().equals(other.isExpense, isExpense));
+            const DeepCollectionEquality().equals(other.isExpense, isExpense) &&
+            const DeepCollectionEquality().equals(other._logs, _logs));
   }
 
   @JsonKey(ignore: true)
@@ -195,7 +218,8 @@ class _$_Category extends _Category {
       const DeepCollectionEquality().hash(categoryName),
       const DeepCollectionEquality().hash(initialValue),
       const DeepCollectionEquality().hash(codePoint),
-      const DeepCollectionEquality().hash(isExpense));
+      const DeepCollectionEquality().hash(isExpense),
+      const DeepCollectionEquality().hash(_logs));
 
   @JsonKey(ignore: true)
   @override
@@ -214,7 +238,8 @@ abstract class _Category extends Category {
       required final String categoryName,
       required final double initialValue,
       required final int codePoint,
-      required final bool isExpense}) = _$_Category;
+      required final bool isExpense,
+      final List<int> logs}) = _$_Category;
   const _Category._() : super._();
 
   factory _Category.fromJson(Map<String, dynamic> json) = _$_Category.fromJson;
@@ -229,6 +254,8 @@ abstract class _Category extends Category {
   int get codePoint => throw _privateConstructorUsedError;
   @override
   bool get isExpense => throw _privateConstructorUsedError;
+  @override
+  List<int> get logs => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$$_CategoryCopyWith<_$_Category> get copyWith =>

@@ -3,6 +3,7 @@ import 'package:budgetbuddy/core/presentation/app_dialog.dart';
 import 'package:budgetbuddy/dialogs/presentation/edit_item_dialog.dart';
 import 'package:budgetbuddy/models/categories/domain/category.dart';
 import 'package:budgetbuddy/models/categories/shared/providers.dart';
+import 'package:budgetbuddy/models/logs/shared/providers.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
@@ -18,6 +19,7 @@ class EditOrDeleteCategory extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final notifier = ref.read(categoryNotifierProvider.notifier);
+    final logsNotifier = ref.read(logNotifierProvider.notifier);
     return AppDialog(
       isLong: false,
       spaceAround: false,
@@ -39,6 +41,9 @@ class EditOrDeleteCategory extends ConsumerWidget {
           style: ElevatedButton.styleFrom(primary: Colors.white24),
           onPressed: () {
             notifier.deleteCategory(category);
+            for (final id in category.logs) {
+              logsNotifier.deleteLogByID(id);
+            }
             AutoRouter.of(context).pop();
           },
           child: const Text('Delete Category'),

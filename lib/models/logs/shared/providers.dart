@@ -1,4 +1,5 @@
 import 'package:budgetbuddy/core/shared/providers.dart';
+import 'package:budgetbuddy/models/categories/shared/providers.dart';
 import 'package:budgetbuddy/models/logs/application/logs_notifier.dart';
 import 'package:budgetbuddy/models/logs/infrastructure/logs_repository.dart';
 import 'package:budgetbuddy/models/logs/infrastructure/logs_services.dart';
@@ -21,5 +22,6 @@ final logNotifierProvider =
   (ref) => LogStateNotifier(
     ref.watch(logServiceProvider),
     ref.watch(logRepoProvider),
+    ref.watch(categoryNotifierProvider.notifier),
   ),
 );

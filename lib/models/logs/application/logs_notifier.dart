@@ -1,3 +1,6 @@
+import 'package:budgetbuddy/models/categories/application/categories_notifier.dart';
+import 'package:budgetbuddy/models/categories/domain/category.dart';
+import 'package:budgetbuddy/models/categories/infrastructure/categories_repository.dart';
 import 'package:budgetbuddy/models/logs/domain/logs_with_dates.dart';
 import 'package:budgetbuddy/models/logs/infrastructure/logs_repository.dart';
 import 'package:budgetbuddy/models/logs/infrastructure/logs_services.dart';
@@ -18,8 +21,9 @@ class LogState with _$LogState {
 
 class LogStateNotifier extends StateNotifier<LogState> {
   final LogsServices services;
+  final CategoriesStateNotifier category;
   final LogsRepository repository;
-  LogStateNotifier(this.services, this.repository)
+  LogStateNotifier(this.services, this.repository, this.category)
       : super(const LogState.initial());
 
   Future<void> fetchLogs() async {
@@ -65,5 +69,51 @@ class LogStateNotifier extends StateNotifier<LogState> {
       (r) => const LogState.initial(),
     );
     fetchLogs();
+  }
+
+  Future<void> deleteLogByID(int id) async {
+    state.maybeMap(
+      orElse: () {},
+      done: (_) {
+        for (final log in _.logs) {
+          if (log.id == id) {
+            deleteLog(log);
+          }
+        }
+      },
+    );
+  }
+
+  Future<void> deleteLogsByDetails(
+    String amount,
+    Category selectedCategory,
+  ) async {
+    state.maybeMap(
+      orElse: () {},
+      done: (_) {
+        List<LogWithDate> logList = [];
+        for (final log in _.logs) {
+          if (log.categoryId == selectedCategory.id) {
+            deleteLog(log);
+          } else {
+            logList.add(log);
+          }
+        }
+        List<int> list = [];
+        for (final log in logList) {
+          list.add(log.id);
+        }
+        category.updateCategory(
+          Category(
+            id: selectedCategory.id,
+            categoryName: selectedCategory.categoryName,
+            initialValue: double.parse(amount),
+            codePoint: selectedCategory.codePoint,
+            isExpense: selectedCategory.isExpense,
+            logs: list,
+          ),
+        );
+      },
+    );
   }
 }

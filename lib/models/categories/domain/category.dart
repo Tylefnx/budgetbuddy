@@ -11,6 +11,7 @@ class Category with _$Category {
     required double initialValue,
     required int codePoint,
     required bool isExpense,
+    @Default([]) List<int> logs,
   }) = _Category;
   
   factory Category.fromJson(Map<String, dynamic> json) => _$CategoryFromJson(json);

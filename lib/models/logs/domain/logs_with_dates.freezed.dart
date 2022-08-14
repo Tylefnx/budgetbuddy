@@ -162,7 +162,7 @@ class __$$_LogWithDateCopyWithImpl<$Res> extends _$LogWithDateCopyWithImpl<$Res>
 class _$_LogWithDate extends _LogWithDate {
   const _$_LogWithDate(
       {this.id = -1,
-      required this.categoryId,
+      this.categoryId = -1,
       required this.details,
       required this.value,
       required this.isExpense,
@@ -176,6 +176,7 @@ class _$_LogWithDate extends _LogWithDate {
   @JsonKey()
   final int id;
   @override
+  @JsonKey()
   final int categoryId;
   @override
   final String details;
@@ -231,7 +232,7 @@ class _$_LogWithDate extends _LogWithDate {
 abstract class _LogWithDate extends LogWithDate {
   const factory _LogWithDate(
       {final int id,
-      required final int categoryId,
+      final int categoryId,
       required final String details,
       required final double value,
       required final bool isExpense,
