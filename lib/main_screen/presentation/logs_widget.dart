@@ -54,15 +54,12 @@ class _LogsWidgetState extends ConsumerState<LogsWidget> {
                       ? '-\$${logList[index].value.toString()}'
                       : '+\$${logList[index].value.toString()}',
                   style: TextStyle(
-                    color: widget.isExpenseMode ? Colors.red : Colors.green,
-                    fontSize: 18
-                  ),
+                      color: widget.isExpenseMode ? Colors.red : Colors.green,
+                      fontSize: 18),
                 ),
                 title: Text(
-                  logList[index].details,
-                  style: const TextStyle(
-                    fontSize: 18
-                  ),
+                  '${logList[index].details} c:${logList[index].categoryId} l:${logList[index].id}',
+                  style: const TextStyle(fontSize: 18),
                 ),
               ),
               separatorBuilder: (BuildContext context, int index) =>

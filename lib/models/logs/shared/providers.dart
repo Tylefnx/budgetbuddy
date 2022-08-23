@@ -8,6 +8,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 final logServiceProvider = Provider(
   (ref) => LogsServices(
     logDatabase: ref.watch(logsDatabaseProvider),
+    categoriesStateNotifier: ref.watch(categoryNotifierProvider.notifier),
   ),
 );
 

@@ -40,10 +40,12 @@ class EditOrDeleteCategory extends ConsumerWidget {
         ElevatedButton(
           style: ElevatedButton.styleFrom(primary: Colors.white24),
           onPressed: () {
-            notifier.deleteCategory(category);
             for (final id in category.logs) {
-              logsNotifier.deleteLogByID(id);
+              logsNotifier.deleteLogByID(id, category);
             }
+            print(category.logs);
+            notifier.deleteCategory(category);
+            
             AutoRouter.of(context).pop();
           },
           child: const Text('Delete Category'),

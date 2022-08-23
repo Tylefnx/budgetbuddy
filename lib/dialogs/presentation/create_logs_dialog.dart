@@ -1,3 +1,5 @@
+import 'dart:ffi';
+
 import 'package:auto_route/auto_route.dart';
 import 'package:budgetbuddy/core/presentation/app_textfield.dart';
 import 'package:budgetbuddy/models/categories/domain/category.dart';
@@ -119,6 +121,7 @@ class SubmitButton extends ConsumerWidget {
             ),
           );
         } else if (option == 0) {
+          List<int> list = category.logs.toList();
           final log = LogWithDate(
             categoryId: category.id,
             details: isExpenseMode
@@ -129,18 +132,8 @@ class SubmitButton extends ConsumerWidget {
             milliSecondsFromEpoch: DateTime.now().millisecondsSinceEpoch,
           );
 
-          ref.read(logNotifierProvider.notifier).createLog(log);
-
-          ref.read(categoryNotifierProvider.notifier).updateCategory(
-                Category(
-                  id: category.id,
-                  categoryName: category.categoryName,
-                  initialValue: category.initialValue + double.parse(amount),
-                  codePoint: category.codePoint,
-                  isExpense: category.isExpense,
-                  logs: category.logs + [log.id],
-                ),
-              );
+          ref.read(logNotifierProvider.notifier).createLog(log, category);
+          list.add(log.id);
           AutoRouter.of(context).pop();
         } else if (option == 1) {
           final log = LogWithDate(
@@ -151,8 +144,10 @@ class SubmitButton extends ConsumerWidget {
             milliSecondsFromEpoch: DateTime.now().millisecondsSinceEpoch,
           );
 
-          ref.read(logNotifierProvider.notifier).createLog(log);
-          ref.read(logNotifierProvider.notifier).deleteLogsByDetails(amount, category);
+          ref.read(logNotifierProvider.notifier).createLog(log, category);
+          ref
+              .read(logNotifierProvider.notifier)
+              .deleteLogsByDetails(amount, category);
           AutoRouter.of(context).pop();
         }
       },

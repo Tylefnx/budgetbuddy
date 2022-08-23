@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:budgetbuddy/models/categories/domain/category.dart';
 import 'package:budgetbuddy/models/logs/domain/logs_failure.dart';
 import 'package:budgetbuddy/models/logs/domain/logs_with_dates.dart';
 import 'package:budgetbuddy/models/logs/infrastructure/logs_services.dart';
@@ -19,17 +20,16 @@ class LogsRepository {
   }
 
   Future<Either<LogsFailure, Unit>> createLog(
-      LogWithDate log) async {
+      LogWithDate log, Category category) async {
     try {
-      await services.createLog(log);
+      await services.createLog(log, category);
       return right(unit);
     } on FileSystemException {
       return left(const LogsFailure.permission());
     }
   }
 
-  Future<Either<LogsFailure, Unit>> updateLog(
-      LogWithDate log) async {
+  Future<Either<LogsFailure, Unit>> updateLog(LogWithDate log) async {
     try {
       await services.updateLog(log);
       return right(unit);
@@ -39,9 +39,11 @@ class LogsRepository {
   }
 
   Future<Either<LogsFailure, Unit>> deleteLog(
-      LogWithDate log) async {
+    LogWithDate log,
+    Category category,
+  ) async {
     try {
-      await services.deleteLog(log.id);
+      await services.deleteLog(log.id, category);
       return right(unit);
     } on FileSystemException {
       return left(const LogsFailure.permission());

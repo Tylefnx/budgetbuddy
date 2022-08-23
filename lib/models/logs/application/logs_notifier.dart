@@ -35,8 +35,8 @@ class LogStateNotifier extends StateNotifier<LogState> {
     );
   }
 
-  Future<void> createLog(LogWithDate log) async {
-    final failureOrUnit = await repository.createLog(log);
+  Future<void> createLog(LogWithDate log, Category category) async {
+    final failureOrUnit = await repository.createLog(log, category);
 
     state = LogState.writing(log);
 
@@ -59,8 +59,8 @@ class LogStateNotifier extends StateNotifier<LogState> {
     fetchLogs();
   }
 
-  Future<void> deleteLog(LogWithDate log) async {
-    final failureOrUnit = await repository.deleteLog(log);
+  Future<void> deleteLog(LogWithDate log, Category category) async {
+    final failureOrUnit = await repository.deleteLog(log, category);
 
     state = LogState.writing(log);
 
@@ -71,13 +71,13 @@ class LogStateNotifier extends StateNotifier<LogState> {
     fetchLogs();
   }
 
-  Future<void> deleteLogByID(int id) async {
+  Future<void> deleteLogByID(int id, Category category) async {
     state.maybeMap(
       orElse: () {},
       done: (_) {
         for (final log in _.logs) {
           if (log.id == id) {
-            deleteLog(log);
+            deleteLog(log, category);
           }
         }
       },
@@ -91,17 +91,12 @@ class LogStateNotifier extends StateNotifier<LogState> {
     state.maybeMap(
       orElse: () {},
       done: (_) {
-        List<LogWithDate> logList = [];
+        var logList = selectedCategory.logs.toList();
         for (final log in _.logs) {
           if (log.categoryId == selectedCategory.id) {
-            deleteLog(log);
-          } else {
-            logList.add(log);
+            logList.remove(log.id);
+            deleteLog(log, selectedCategory);
           }
-        }
-        List<int> list = [];
-        for (final log in logList) {
-          list.add(log.id);
         }
         category.updateCategory(
           Category(
@@ -110,7 +105,7 @@ class LogStateNotifier extends StateNotifier<LogState> {
             initialValue: double.parse(amount),
             codePoint: selectedCategory.codePoint,
             isExpense: selectedCategory.isExpense,
-            logs: list,
+            logs: logList,
           ),
         );
       },
