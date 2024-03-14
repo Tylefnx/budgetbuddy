@@ -1,8 +1,6 @@
 import 'package:budgetbuddy/dialogs/presentation/create_item_dialog.dart';
 import 'package:budgetbuddy/dialogs/presentation/edit_or_delete_dialog.dart';
-import 'package:budgetbuddy/dialogs/presentation/show_logs.dart';
 import 'package:budgetbuddy/main_screen/menu_item_icon.dart';
-import 'package:budgetbuddy/models/categories/domain/category.dart';
 import 'package:budgetbuddy/models/categories/shared/providers.dart';
 import 'package:budgetbuddy/models/logs/shared/providers.dart';
 import 'package:circle_list/circle_list.dart';
@@ -62,8 +60,7 @@ class _MainPageBodyState extends ConsumerState<CategoriesWidget> {
               childrenPadding: 10,
               centerWidget: TextButton(
                 style: TextButton.styleFrom(
-                    primary: Colors.white70,
-                    shape: const CircleBorder(),
+                    foregroundColor: Colors.white70, shape: const CircleBorder(),
                     minimumSize: Size.fromRadius(size.width / 4)),
                 onPressed: widget.onPressed,
                 child: Text(
@@ -133,11 +130,11 @@ class SelectDateTypeDropdownField extends StatelessWidget {
     return ListTile(
       leading: IconButton(
         onPressed: () {},
-        icon: Icon(Icons.arrow_back_ios),
+        icon: const Icon(Icons.arrow_back_ios),
       ),
       trailing: IconButton(
         onPressed: () {},
-        icon: Icon(Icons.arrow_forward_ios),
+        icon: const Icon(Icons.arrow_forward_ios),
       ),
       title: Center(
         child: SizedBox(

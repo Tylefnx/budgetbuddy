@@ -3,8 +3,6 @@ import 'package:budgetbuddy/core/presentation/app_textfield.dart';
 import 'package:budgetbuddy/dialogs/presentation/icon_picker.dart';
 import 'package:budgetbuddy/models/categories/domain/category.dart';
 import 'package:budgetbuddy/models/categories/shared/providers.dart';
-import 'package:budgetbuddy/models/logs/domain/logs_with_dates.dart';
-import 'package:budgetbuddy/models/logs/shared/providers.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
@@ -97,7 +95,7 @@ class SubmitButton extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return ElevatedButton(
-      style: ElevatedButton.styleFrom(primary: Colors.white24),
+      style: ElevatedButton.styleFrom(backgroundColor: Colors.white24),
       onPressed: () {
           ref.read(categoryNotifierProvider.notifier).insertExpenses(
                 Category(

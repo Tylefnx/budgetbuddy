@@ -1,6 +1,5 @@
 import 'package:budgetbuddy/models/categories/application/categories_notifier.dart';
 import 'package:budgetbuddy/models/categories/domain/category.dart';
-import 'package:budgetbuddy/models/categories/domain/category_failure.dart';
 import 'package:budgetbuddy/models/logs/domain/logs_with_dates.dart';
 import 'package:sembast/sembast.dart';
 

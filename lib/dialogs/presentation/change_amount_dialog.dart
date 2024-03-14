@@ -110,7 +110,7 @@ class SubmitButton extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return ElevatedButton(
-      style: ElevatedButton.styleFrom(primary: Colors.white24),
+      style: ElevatedButton.styleFrom(backgroundColor: Colors.white24),
       onPressed: () {
         if (double.tryParse(amount) == null) {
           ScaffoldMessenger.of(context)

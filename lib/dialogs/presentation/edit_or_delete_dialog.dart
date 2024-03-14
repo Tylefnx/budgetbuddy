@@ -25,7 +25,7 @@ class EditOrDeleteCategory extends ConsumerWidget {
       spaceAround: false,
       children: [
         ElevatedButton(
-          style: ElevatedButton.styleFrom(primary: Colors.white24),
+          style: ElevatedButton.styleFrom(backgroundColor: Colors.white24),
           onPressed: () {
             showDialog(
               context: context,
@@ -38,7 +38,7 @@ class EditOrDeleteCategory extends ConsumerWidget {
           child: const Text('Edit Category'),
         ),
         ElevatedButton(
-          style: ElevatedButton.styleFrom(primary: Colors.white24),
+          style: ElevatedButton.styleFrom(backgroundColor: Colors.white24),
           onPressed: () {
             for (final id in category.logs) {
               logsNotifier.deleteLogByID(id, category);

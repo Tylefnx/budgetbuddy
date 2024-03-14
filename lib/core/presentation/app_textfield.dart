@@ -34,7 +34,7 @@ TextEditingController useListenedTextEditingController({
   final t = useTextEditingController(text: text);
   useEffect(
     () {
-      final listener = () => onChanged(t.text);
+      listener() => onChanged(t.text);
       t.addListener(listener);
       return () => t.removeListener(listener);
     },
