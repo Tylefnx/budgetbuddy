@@ -1,14 +1,18 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:budgetbuddy/main_screen/presentation/main_page.dart';
-import 'package:flutter/material.dart';
 
 part 'app_router.gr.dart';
 
-@MaterialAutoRouter(            
-  replaceInRouteName: 'Page,Route',            
-  routes: <AutoRoute>[            
-    AutoRoute(page: MainPage, initial: true),            
-  ],
-)            
-
-class AppRouter extends _$AppRouter{}
+@AutoRouterConfig(replaceInRouteName: 'Page,Route')
+class AppRouter extends RootStackRouter {
+  @override
+  RouteType get defaultRouteType => const RouteType.material();
+  @override
+  List<AutoRoute> get routes => [
+        AutoRoute(
+          path: '/',
+          page: MainRoute.page,
+          initial: true,
+        ),
+      ];
+}
