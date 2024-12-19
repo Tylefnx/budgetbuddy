@@ -9,10 +9,10 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 class CategoriesWidget extends ConsumerStatefulWidget {
   const CategoriesWidget({
-    Key? key,
+    super.key,
     required this.isExpenseMode,
     required this.onPressed,
-  }) : super(key: key);
+  });
 
   final void Function()? onPressed;
   final bool isExpenseMode;
