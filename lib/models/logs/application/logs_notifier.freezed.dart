@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'logs_notifier.dart';
 
@@ -12,7 +12,7 @@ part of 'logs_notifier.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$LogState {
@@ -27,11 +27,11 @@ mixin _$LogState {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? reading,
-    TResult Function(List<LogWithDate> logs)? done,
-    TResult Function(LogWithDate log)? writing,
-    TResult Function()? failed,
+    TResult? Function()? initial,
+    TResult? Function()? reading,
+    TResult? Function(List<LogWithDate> logs)? done,
+    TResult? Function(LogWithDate log)? writing,
+    TResult? Function()? failed,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -55,11 +55,11 @@ mixin _$LogState {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_Reading value)? reading,
-    TResult Function(_Done value)? done,
-    TResult Function(_Writing value)? writing,
-    TResult Function(_Failed value)? failed,
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Reading value)? reading,
+    TResult? Function(_Done value)? done,
+    TResult? Function(_Writing value)? writing,
+    TResult? Function(_Failed value)? failed,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -77,39 +77,46 @@ mixin _$LogState {
 /// @nodoc
 abstract class $LogStateCopyWith<$Res> {
   factory $LogStateCopyWith(LogState value, $Res Function(LogState) then) =
-      _$LogStateCopyWithImpl<$Res>;
+      _$LogStateCopyWithImpl<$Res, LogState>;
 }
 
 /// @nodoc
-class _$LogStateCopyWithImpl<$Res> implements $LogStateCopyWith<$Res> {
+class _$LogStateCopyWithImpl<$Res, $Val extends LogState>
+    implements $LogStateCopyWith<$Res> {
   _$LogStateCopyWithImpl(this._value, this._then);
 
-  final LogState _value;
   // ignore: unused_field
-  final $Res Function(LogState) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  /// Create a copy of LogState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
-abstract class _$$_InitialCopyWith<$Res> {
-  factory _$$_InitialCopyWith(
-          _$_Initial value, $Res Function(_$_Initial) then) =
-      __$$_InitialCopyWithImpl<$Res>;
+abstract class _$$InitialImplCopyWith<$Res> {
+  factory _$$InitialImplCopyWith(
+          _$InitialImpl value, $Res Function(_$InitialImpl) then) =
+      __$$InitialImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_InitialCopyWithImpl<$Res> extends _$LogStateCopyWithImpl<$Res>
-    implements _$$_InitialCopyWith<$Res> {
-  __$$_InitialCopyWithImpl(_$_Initial _value, $Res Function(_$_Initial) _then)
-      : super(_value, (v) => _then(v as _$_Initial));
+class __$$InitialImplCopyWithImpl<$Res>
+    extends _$LogStateCopyWithImpl<$Res, _$InitialImpl>
+    implements _$$InitialImplCopyWith<$Res> {
+  __$$InitialImplCopyWithImpl(
+      _$InitialImpl _value, $Res Function(_$InitialImpl) _then)
+      : super(_value, _then);
 
-  @override
-  _$_Initial get _value => super._value as _$_Initial;
+  /// Create a copy of LogState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
 
-class _$_Initial extends _Initial {
-  const _$_Initial() : super._();
+class _$InitialImpl extends _Initial {
+  const _$InitialImpl() : super._();
 
   @override
   String toString() {
@@ -117,9 +124,9 @@ class _$_Initial extends _Initial {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_Initial);
+        (other.runtimeType == runtimeType && other is _$InitialImpl);
   }
 
   @override
@@ -140,11 +147,11 @@ class _$_Initial extends _Initial {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? reading,
-    TResult Function(List<LogWithDate> logs)? done,
-    TResult Function(LogWithDate log)? writing,
-    TResult Function()? failed,
+    TResult? Function()? initial,
+    TResult? Function()? reading,
+    TResult? Function(List<LogWithDate> logs)? done,
+    TResult? Function(LogWithDate log)? writing,
+    TResult? Function()? failed,
   }) {
     return initial?.call();
   }
@@ -180,11 +187,11 @@ class _$_Initial extends _Initial {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_Reading value)? reading,
-    TResult Function(_Done value)? done,
-    TResult Function(_Writing value)? writing,
-    TResult Function(_Failed value)? failed,
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Reading value)? reading,
+    TResult? Function(_Done value)? done,
+    TResult? Function(_Writing value)? writing,
+    TResult? Function(_Failed value)? failed,
   }) {
     return initial?.call(this);
   }
@@ -207,31 +214,33 @@ class _$_Initial extends _Initial {
 }
 
 abstract class _Initial extends LogState {
-  const factory _Initial() = _$_Initial;
+  const factory _Initial() = _$InitialImpl;
   const _Initial._() : super._();
 }
 
 /// @nodoc
-abstract class _$$_ReadingCopyWith<$Res> {
-  factory _$$_ReadingCopyWith(
-          _$_Reading value, $Res Function(_$_Reading) then) =
-      __$$_ReadingCopyWithImpl<$Res>;
+abstract class _$$ReadingImplCopyWith<$Res> {
+  factory _$$ReadingImplCopyWith(
+          _$ReadingImpl value, $Res Function(_$ReadingImpl) then) =
+      __$$ReadingImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_ReadingCopyWithImpl<$Res> extends _$LogStateCopyWithImpl<$Res>
-    implements _$$_ReadingCopyWith<$Res> {
-  __$$_ReadingCopyWithImpl(_$_Reading _value, $Res Function(_$_Reading) _then)
-      : super(_value, (v) => _then(v as _$_Reading));
+class __$$ReadingImplCopyWithImpl<$Res>
+    extends _$LogStateCopyWithImpl<$Res, _$ReadingImpl>
+    implements _$$ReadingImplCopyWith<$Res> {
+  __$$ReadingImplCopyWithImpl(
+      _$ReadingImpl _value, $Res Function(_$ReadingImpl) _then)
+      : super(_value, _then);
 
-  @override
-  _$_Reading get _value => super._value as _$_Reading;
+  /// Create a copy of LogState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
 
-class _$_Reading extends _Reading {
-  const _$_Reading() : super._();
+class _$ReadingImpl extends _Reading {
+  const _$ReadingImpl() : super._();
 
   @override
   String toString() {
@@ -239,9 +248,9 @@ class _$_Reading extends _Reading {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_Reading);
+        (other.runtimeType == runtimeType && other is _$ReadingImpl);
   }
 
   @override
@@ -262,11 +271,11 @@ class _$_Reading extends _Reading {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? reading,
-    TResult Function(List<LogWithDate> logs)? done,
-    TResult Function(LogWithDate log)? writing,
-    TResult Function()? failed,
+    TResult? Function()? initial,
+    TResult? Function()? reading,
+    TResult? Function(List<LogWithDate> logs)? done,
+    TResult? Function(LogWithDate log)? writing,
+    TResult? Function()? failed,
   }) {
     return reading?.call();
   }
@@ -302,11 +311,11 @@ class _$_Reading extends _Reading {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_Reading value)? reading,
-    TResult Function(_Done value)? done,
-    TResult Function(_Writing value)? writing,
-    TResult Function(_Failed value)? failed,
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Reading value)? reading,
+    TResult? Function(_Done value)? done,
+    TResult? Function(_Writing value)? writing,
+    TResult? Function(_Failed value)? failed,
   }) {
     return reading?.call(this);
   }
@@ -329,32 +338,35 @@ class _$_Reading extends _Reading {
 }
 
 abstract class _Reading extends LogState {
-  const factory _Reading() = _$_Reading;
+  const factory _Reading() = _$ReadingImpl;
   const _Reading._() : super._();
 }
 
 /// @nodoc
-abstract class _$$_DoneCopyWith<$Res> {
-  factory _$$_DoneCopyWith(_$_Done value, $Res Function(_$_Done) then) =
-      __$$_DoneCopyWithImpl<$Res>;
+abstract class _$$DoneImplCopyWith<$Res> {
+  factory _$$DoneImplCopyWith(
+          _$DoneImpl value, $Res Function(_$DoneImpl) then) =
+      __$$DoneImplCopyWithImpl<$Res>;
+  @useResult
   $Res call({List<LogWithDate> logs});
 }
 
 /// @nodoc
-class __$$_DoneCopyWithImpl<$Res> extends _$LogStateCopyWithImpl<$Res>
-    implements _$$_DoneCopyWith<$Res> {
-  __$$_DoneCopyWithImpl(_$_Done _value, $Res Function(_$_Done) _then)
-      : super(_value, (v) => _then(v as _$_Done));
+class __$$DoneImplCopyWithImpl<$Res>
+    extends _$LogStateCopyWithImpl<$Res, _$DoneImpl>
+    implements _$$DoneImplCopyWith<$Res> {
+  __$$DoneImplCopyWithImpl(_$DoneImpl _value, $Res Function(_$DoneImpl) _then)
+      : super(_value, _then);
 
-  @override
-  _$_Done get _value => super._value as _$_Done;
-
+  /// Create a copy of LogState
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? logs = freezed,
+    Object? logs = null,
   }) {
-    return _then(_$_Done(
-      logs == freezed
+    return _then(_$DoneImpl(
+      null == logs
           ? _value._logs
           : logs // ignore: cast_nullable_to_non_nullable
               as List<LogWithDate>,
@@ -364,14 +376,15 @@ class __$$_DoneCopyWithImpl<$Res> extends _$LogStateCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_Done extends _Done {
-  const _$_Done(final List<LogWithDate> logs)
+class _$DoneImpl extends _Done {
+  const _$DoneImpl(final List<LogWithDate> logs)
       : _logs = logs,
         super._();
 
   final List<LogWithDate> _logs;
   @override
   List<LogWithDate> get logs {
+    if (_logs is EqualUnmodifiableListView) return _logs;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_logs);
   }
@@ -382,10 +395,10 @@ class _$_Done extends _Done {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_Done &&
+            other is _$DoneImpl &&
             const DeepCollectionEquality().equals(other._logs, _logs));
   }
 
@@ -393,10 +406,13 @@ class _$_Done extends _Done {
   int get hashCode =>
       Object.hash(runtimeType, const DeepCollectionEquality().hash(_logs));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of LogState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  _$$_DoneCopyWith<_$_Done> get copyWith =>
-      __$$_DoneCopyWithImpl<_$_Done>(this, _$identity);
+  @pragma('vm:prefer-inline')
+  _$$DoneImplCopyWith<_$DoneImpl> get copyWith =>
+      __$$DoneImplCopyWithImpl<_$DoneImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -413,11 +429,11 @@ class _$_Done extends _Done {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? reading,
-    TResult Function(List<LogWithDate> logs)? done,
-    TResult Function(LogWithDate log)? writing,
-    TResult Function()? failed,
+    TResult? Function()? initial,
+    TResult? Function()? reading,
+    TResult? Function(List<LogWithDate> logs)? done,
+    TResult? Function(LogWithDate log)? writing,
+    TResult? Function()? failed,
   }) {
     return done?.call(logs);
   }
@@ -453,11 +469,11 @@ class _$_Done extends _Done {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_Reading value)? reading,
-    TResult Function(_Done value)? done,
-    TResult Function(_Writing value)? writing,
-    TResult Function(_Failed value)? failed,
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Reading value)? reading,
+    TResult? Function(_Done value)? done,
+    TResult? Function(_Writing value)? writing,
+    TResult? Function(_Failed value)? failed,
   }) {
     return done?.call(this);
   }
@@ -480,46 +496,56 @@ class _$_Done extends _Done {
 }
 
 abstract class _Done extends LogState {
-  const factory _Done(final List<LogWithDate> logs) = _$_Done;
+  const factory _Done(final List<LogWithDate> logs) = _$DoneImpl;
   const _Done._() : super._();
 
-  List<LogWithDate> get logs => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
-  _$$_DoneCopyWith<_$_Done> get copyWith => throw _privateConstructorUsedError;
+  List<LogWithDate> get logs;
+
+  /// Create a copy of LogState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$DoneImplCopyWith<_$DoneImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_WritingCopyWith<$Res> {
-  factory _$$_WritingCopyWith(
-          _$_Writing value, $Res Function(_$_Writing) then) =
-      __$$_WritingCopyWithImpl<$Res>;
+abstract class _$$WritingImplCopyWith<$Res> {
+  factory _$$WritingImplCopyWith(
+          _$WritingImpl value, $Res Function(_$WritingImpl) then) =
+      __$$WritingImplCopyWithImpl<$Res>;
+  @useResult
   $Res call({LogWithDate log});
 
   $LogWithDateCopyWith<$Res> get log;
 }
 
 /// @nodoc
-class __$$_WritingCopyWithImpl<$Res> extends _$LogStateCopyWithImpl<$Res>
-    implements _$$_WritingCopyWith<$Res> {
-  __$$_WritingCopyWithImpl(_$_Writing _value, $Res Function(_$_Writing) _then)
-      : super(_value, (v) => _then(v as _$_Writing));
+class __$$WritingImplCopyWithImpl<$Res>
+    extends _$LogStateCopyWithImpl<$Res, _$WritingImpl>
+    implements _$$WritingImplCopyWith<$Res> {
+  __$$WritingImplCopyWithImpl(
+      _$WritingImpl _value, $Res Function(_$WritingImpl) _then)
+      : super(_value, _then);
 
-  @override
-  _$_Writing get _value => super._value as _$_Writing;
-
+  /// Create a copy of LogState
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? log = freezed,
+    Object? log = null,
   }) {
-    return _then(_$_Writing(
-      log == freezed
+    return _then(_$WritingImpl(
+      null == log
           ? _value.log
           : log // ignore: cast_nullable_to_non_nullable
               as LogWithDate,
     ));
   }
 
+  /// Create a copy of LogState
+  /// with the given fields replaced by the non-null parameter values.
   @override
+  @pragma('vm:prefer-inline')
   $LogWithDateCopyWith<$Res> get log {
     return $LogWithDateCopyWith<$Res>(_value.log, (value) {
       return _then(_value.copyWith(log: value));
@@ -529,8 +555,8 @@ class __$$_WritingCopyWithImpl<$Res> extends _$LogStateCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_Writing extends _Writing {
-  const _$_Writing(this.log) : super._();
+class _$WritingImpl extends _Writing {
+  const _$WritingImpl(this.log) : super._();
 
   @override
   final LogWithDate log;
@@ -541,21 +567,23 @@ class _$_Writing extends _Writing {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_Writing &&
-            const DeepCollectionEquality().equals(other.log, log));
+            other is _$WritingImpl &&
+            (identical(other.log, log) || other.log == log));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(log));
+  int get hashCode => Object.hash(runtimeType, log);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of LogState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  _$$_WritingCopyWith<_$_Writing> get copyWith =>
-      __$$_WritingCopyWithImpl<_$_Writing>(this, _$identity);
+  @pragma('vm:prefer-inline')
+  _$$WritingImplCopyWith<_$WritingImpl> get copyWith =>
+      __$$WritingImplCopyWithImpl<_$WritingImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -572,11 +600,11 @@ class _$_Writing extends _Writing {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? reading,
-    TResult Function(List<LogWithDate> logs)? done,
-    TResult Function(LogWithDate log)? writing,
-    TResult Function()? failed,
+    TResult? Function()? initial,
+    TResult? Function()? reading,
+    TResult? Function(List<LogWithDate> logs)? done,
+    TResult? Function(LogWithDate log)? writing,
+    TResult? Function()? failed,
   }) {
     return writing?.call(log);
   }
@@ -612,11 +640,11 @@ class _$_Writing extends _Writing {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_Reading value)? reading,
-    TResult Function(_Done value)? done,
-    TResult Function(_Writing value)? writing,
-    TResult Function(_Failed value)? failed,
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Reading value)? reading,
+    TResult? Function(_Done value)? done,
+    TResult? Function(_Writing value)? writing,
+    TResult? Function(_Failed value)? failed,
   }) {
     return writing?.call(this);
   }
@@ -639,35 +667,41 @@ class _$_Writing extends _Writing {
 }
 
 abstract class _Writing extends LogState {
-  const factory _Writing(final LogWithDate log) = _$_Writing;
+  const factory _Writing(final LogWithDate log) = _$WritingImpl;
   const _Writing._() : super._();
 
-  LogWithDate get log => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
-  _$$_WritingCopyWith<_$_Writing> get copyWith =>
+  LogWithDate get log;
+
+  /// Create a copy of LogState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$WritingImplCopyWith<_$WritingImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_FailedCopyWith<$Res> {
-  factory _$$_FailedCopyWith(_$_Failed value, $Res Function(_$_Failed) then) =
-      __$$_FailedCopyWithImpl<$Res>;
+abstract class _$$FailedImplCopyWith<$Res> {
+  factory _$$FailedImplCopyWith(
+          _$FailedImpl value, $Res Function(_$FailedImpl) then) =
+      __$$FailedImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_FailedCopyWithImpl<$Res> extends _$LogStateCopyWithImpl<$Res>
-    implements _$$_FailedCopyWith<$Res> {
-  __$$_FailedCopyWithImpl(_$_Failed _value, $Res Function(_$_Failed) _then)
-      : super(_value, (v) => _then(v as _$_Failed));
+class __$$FailedImplCopyWithImpl<$Res>
+    extends _$LogStateCopyWithImpl<$Res, _$FailedImpl>
+    implements _$$FailedImplCopyWith<$Res> {
+  __$$FailedImplCopyWithImpl(
+      _$FailedImpl _value, $Res Function(_$FailedImpl) _then)
+      : super(_value, _then);
 
-  @override
-  _$_Failed get _value => super._value as _$_Failed;
+  /// Create a copy of LogState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
 
-class _$_Failed extends _Failed {
-  const _$_Failed() : super._();
+class _$FailedImpl extends _Failed {
+  const _$FailedImpl() : super._();
 
   @override
   String toString() {
@@ -675,9 +709,9 @@ class _$_Failed extends _Failed {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_Failed);
+        (other.runtimeType == runtimeType && other is _$FailedImpl);
   }
 
   @override
@@ -698,11 +732,11 @@ class _$_Failed extends _Failed {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? reading,
-    TResult Function(List<LogWithDate> logs)? done,
-    TResult Function(LogWithDate log)? writing,
-    TResult Function()? failed,
+    TResult? Function()? initial,
+    TResult? Function()? reading,
+    TResult? Function(List<LogWithDate> logs)? done,
+    TResult? Function(LogWithDate log)? writing,
+    TResult? Function()? failed,
   }) {
     return failed?.call();
   }
@@ -738,11 +772,11 @@ class _$_Failed extends _Failed {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_Reading value)? reading,
-    TResult Function(_Done value)? done,
-    TResult Function(_Writing value)? writing,
-    TResult Function(_Failed value)? failed,
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Reading value)? reading,
+    TResult? Function(_Done value)? done,
+    TResult? Function(_Writing value)? writing,
+    TResult? Function(_Failed value)? failed,
   }) {
     return failed?.call(this);
   }
@@ -765,6 +799,6 @@ class _$_Failed extends _Failed {
 }
 
 abstract class _Failed extends LogState {
-  const factory _Failed() = _$_Failed;
+  const factory _Failed() = _$FailedImpl;
   const _Failed._() : super._();
 }
