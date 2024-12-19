@@ -26,7 +26,7 @@ class MainPage extends HookWidget {
         children: [
           CategoriesWidget(
             onPressed: onPressed,
-            isExpenseMode: mode.value,
+            isExpenseMode: mode,
           ),
           const SizedBox(height: 30),
           Expanded(

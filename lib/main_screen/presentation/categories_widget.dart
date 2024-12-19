@@ -1,6 +1,7 @@
 import 'package:budgetbuddy/dialogs/presentation/create_item_dialog.dart';
 import 'package:budgetbuddy/dialogs/presentation/edit_or_delete_dialog.dart';
 import 'package:budgetbuddy/main_screen/menu_item_icon.dart';
+import 'package:budgetbuddy/models/categories/domain/category.dart';
 import 'package:budgetbuddy/models/categories/shared/providers.dart';
 import 'package:budgetbuddy/models/logs/shared/providers.dart';
 import 'package:circle_list/circle_list.dart';
@@ -10,7 +11,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 class CategoriesWidget extends HookConsumerWidget {
   final void Function()? onPressed;
-  final bool isExpenseMode;
+  final ValueNotifier<bool> isExpenseMode;
   const CategoriesWidget({
     super.key,
     this.onPressed,
@@ -19,13 +20,29 @@ class CategoriesWidget extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final categoriesState = ref.watch(categoryNotifierProvider);
+    final budget = useState(0.0);
+    final total = useState(0.0);
+    final categories = useState<List<Category>>([]);
     useEffect(
       () {
         ref.read(categoryNotifierProvider.notifier).fetchExpenses();
         ref.read(logNotifierProvider.notifier).fetchLogs();
+        print(categories.value);
+        categoriesState.maybeMap(
+          orElse: () {},
+          done: (_) => categories.value = _.category,
+        );
+        print(categories.value);
+        calculate(
+          total: total,
+          budget: budget,
+          isExpenseMode: isExpenseMode,
+          categories: categories,
+        );
         return null;
       },
-      [],
+      [categoriesState],
     );
     final size = MediaQuery.of(context).size;
     final categoryState = ref.watch(categoryNotifierProvider);
@@ -35,20 +52,6 @@ class CategoriesWidget extends HookConsumerWidget {
       children: categoryState.maybeMap(
         orElse: () => [const CircularProgressIndicator()],
         done: (_) {
-          final budget = useState(0.0);
-          final total = useState(0.0);
-          for (final category in _.category) {
-            if (category.isExpense == isExpenseMode) {
-              total.value += category.initialValue;
-            }
-          }
-          for (final category in _.category) {
-            if (category.isExpense == true) {
-              budget.value -= category.initialValue;
-            } else {
-              budget.value += category.initialValue;
-            }
-          }
           return [
             CircleList(
               childrenPadding: 10,
@@ -59,7 +62,7 @@ class CategoriesWidget extends HookConsumerWidget {
                     minimumSize: Size.fromRadius(size.width / 4)),
                 onPressed: onPressed,
                 child: Text(
-                  '${isExpenseMode ? 'Expenses' : 'Incomes'}\n\$${total.value}',
+                  '${isExpenseMode.value ? 'Expenses' : 'Incomes'}\n\$${total.value}',
                   textAlign: TextAlign.center,
                   style: const TextStyle(fontSize: 25),
                 ),
@@ -70,17 +73,17 @@ class CategoriesWidget extends HookConsumerWidget {
               children: [
                 if (_.category.isNotEmpty)
                   for (final category in _.category)
-                    if (category.isExpense == isExpenseMode)
+                    if (category.isExpense == isExpenseMode.value)
                       MenuItemIcon(
                         category: category,
                         onLongPress: () => showDialog(
                           context: context,
                           builder: (context) => EditOrDeleteCategory(
-                            isExpenseMode: isExpenseMode,
+                            isExpenseMode: isExpenseMode.value,
                             category: category,
                           ),
                         ),
-                        isExpenseMode: isExpenseMode,
+                        isExpenseMode: isExpenseMode.value,
                       ),
                 IconButton(
                   iconSize: size.width / 10,
@@ -88,7 +91,7 @@ class CategoriesWidget extends HookConsumerWidget {
                     showDialog(
                       context: context,
                       builder: (context) => CreateCategoryDialog(
-                        isExpenseMode: isExpenseMode,
+                        isExpenseMode: isExpenseMode.value,
                       ),
                     );
                   },
@@ -173,5 +176,25 @@ class SelectDateTypeDropdownField extends StatelessWidget {
         ),
       ),
     );
+  }
+}
+
+void calculate({
+  required ValueNotifier<double> total,
+  required ValueNotifier<double> budget,
+  required ValueNotifier<bool> isExpenseMode,
+  required ValueNotifier<List<Category>> categories,
+}) {
+  for (final category in categories.value) {
+    if (category.isExpense == isExpenseMode.value) {
+      total.value += category.initialValue;
+    }
+  }
+  for (final category in categories.value) {
+    if (category.isExpense == true) {
+      budget.value -= category.initialValue;
+    } else {
+      budget.value += category.initialValue;
+    }
   }
 }
