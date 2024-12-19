@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'category.dart';
 
@@ -12,7 +12,7 @@ part of 'category.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 Category _$CategoryFromJson(Map<String, dynamic> json) {
   return _Category.fromJson(json);
@@ -27,8 +27,12 @@ mixin _$Category {
   bool get isExpense => throw _privateConstructorUsedError;
   List<int> get logs => throw _privateConstructorUsedError;
 
+  /// Serializes this Category to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of Category
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $CategoryCopyWith<Category> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -36,7 +40,8 @@ mixin _$Category {
 /// @nodoc
 abstract class $CategoryCopyWith<$Res> {
   factory $CategoryCopyWith(Category value, $Res Function(Category) then) =
-      _$CategoryCopyWithImpl<$Res>;
+      _$CategoryCopyWithImpl<$Res, Category>;
+  @useResult
   $Res call(
       {int id,
       String categoryName,
@@ -47,57 +52,64 @@ abstract class $CategoryCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$CategoryCopyWithImpl<$Res> implements $CategoryCopyWith<$Res> {
+class _$CategoryCopyWithImpl<$Res, $Val extends Category>
+    implements $CategoryCopyWith<$Res> {
   _$CategoryCopyWithImpl(this._value, this._then);
 
-  final Category _value;
   // ignore: unused_field
-  final $Res Function(Category) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  /// Create a copy of Category
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = freezed,
-    Object? categoryName = freezed,
-    Object? initialValue = freezed,
-    Object? codePoint = freezed,
-    Object? isExpense = freezed,
-    Object? logs = freezed,
+    Object? id = null,
+    Object? categoryName = null,
+    Object? initialValue = null,
+    Object? codePoint = null,
+    Object? isExpense = null,
+    Object? logs = null,
   }) {
     return _then(_value.copyWith(
-      id: id == freezed
+      id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as int,
-      categoryName: categoryName == freezed
+      categoryName: null == categoryName
           ? _value.categoryName
           : categoryName // ignore: cast_nullable_to_non_nullable
               as String,
-      initialValue: initialValue == freezed
+      initialValue: null == initialValue
           ? _value.initialValue
           : initialValue // ignore: cast_nullable_to_non_nullable
               as double,
-      codePoint: codePoint == freezed
+      codePoint: null == codePoint
           ? _value.codePoint
           : codePoint // ignore: cast_nullable_to_non_nullable
               as int,
-      isExpense: isExpense == freezed
+      isExpense: null == isExpense
           ? _value.isExpense
           : isExpense // ignore: cast_nullable_to_non_nullable
               as bool,
-      logs: logs == freezed
+      logs: null == logs
           ? _value.logs
           : logs // ignore: cast_nullable_to_non_nullable
               as List<int>,
-    ));
+    ) as $Val);
   }
 }
 
 /// @nodoc
-abstract class _$$_CategoryCopyWith<$Res> implements $CategoryCopyWith<$Res> {
-  factory _$$_CategoryCopyWith(
-          _$_Category value, $Res Function(_$_Category) then) =
-      __$$_CategoryCopyWithImpl<$Res>;
+abstract class _$$CategoryImplCopyWith<$Res>
+    implements $CategoryCopyWith<$Res> {
+  factory _$$CategoryImplCopyWith(
+          _$CategoryImpl value, $Res Function(_$CategoryImpl) then) =
+      __$$CategoryImplCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {int id,
       String categoryName,
@@ -108,46 +120,47 @@ abstract class _$$_CategoryCopyWith<$Res> implements $CategoryCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_CategoryCopyWithImpl<$Res> extends _$CategoryCopyWithImpl<$Res>
-    implements _$$_CategoryCopyWith<$Res> {
-  __$$_CategoryCopyWithImpl(
-      _$_Category _value, $Res Function(_$_Category) _then)
-      : super(_value, (v) => _then(v as _$_Category));
+class __$$CategoryImplCopyWithImpl<$Res>
+    extends _$CategoryCopyWithImpl<$Res, _$CategoryImpl>
+    implements _$$CategoryImplCopyWith<$Res> {
+  __$$CategoryImplCopyWithImpl(
+      _$CategoryImpl _value, $Res Function(_$CategoryImpl) _then)
+      : super(_value, _then);
 
-  @override
-  _$_Category get _value => super._value as _$_Category;
-
+  /// Create a copy of Category
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = freezed,
-    Object? categoryName = freezed,
-    Object? initialValue = freezed,
-    Object? codePoint = freezed,
-    Object? isExpense = freezed,
-    Object? logs = freezed,
+    Object? id = null,
+    Object? categoryName = null,
+    Object? initialValue = null,
+    Object? codePoint = null,
+    Object? isExpense = null,
+    Object? logs = null,
   }) {
-    return _then(_$_Category(
-      id: id == freezed
+    return _then(_$CategoryImpl(
+      id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as int,
-      categoryName: categoryName == freezed
+      categoryName: null == categoryName
           ? _value.categoryName
           : categoryName // ignore: cast_nullable_to_non_nullable
               as String,
-      initialValue: initialValue == freezed
+      initialValue: null == initialValue
           ? _value.initialValue
           : initialValue // ignore: cast_nullable_to_non_nullable
               as double,
-      codePoint: codePoint == freezed
+      codePoint: null == codePoint
           ? _value.codePoint
           : codePoint // ignore: cast_nullable_to_non_nullable
               as int,
-      isExpense: isExpense == freezed
+      isExpense: null == isExpense
           ? _value.isExpense
           : isExpense // ignore: cast_nullable_to_non_nullable
               as bool,
-      logs: logs == freezed
+      logs: null == logs
           ? _value._logs
           : logs // ignore: cast_nullable_to_non_nullable
               as List<int>,
@@ -157,8 +170,8 @@ class __$$_CategoryCopyWithImpl<$Res> extends _$CategoryCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_Category extends _Category {
-  const _$_Category(
+class _$CategoryImpl extends _Category {
+  const _$CategoryImpl(
       {this.id = -1,
       required this.categoryName,
       required this.initialValue,
@@ -168,8 +181,8 @@ class _$_Category extends _Category {
       : _logs = logs,
         super._();
 
-  factory _$_Category.fromJson(Map<String, dynamic> json) =>
-      _$$_CategoryFromJson(json);
+  factory _$CategoryImpl.fromJson(Map<String, dynamic> json) =>
+      _$$CategoryImplFromJson(json);
 
   @override
   @JsonKey()
@@ -186,6 +199,7 @@ class _$_Category extends _Category {
   @override
   @JsonKey()
   List<int> get logs {
+    if (_logs is EqualUnmodifiableListView) return _logs;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_logs);
   }
@@ -196,39 +210,40 @@ class _$_Category extends _Category {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_Category &&
-            const DeepCollectionEquality().equals(other.id, id) &&
-            const DeepCollectionEquality()
-                .equals(other.categoryName, categoryName) &&
-            const DeepCollectionEquality()
-                .equals(other.initialValue, initialValue) &&
-            const DeepCollectionEquality().equals(other.codePoint, codePoint) &&
-            const DeepCollectionEquality().equals(other.isExpense, isExpense) &&
+            other is _$CategoryImpl &&
+            (identical(other.id, id) || other.id == id) &&
+            (identical(other.categoryName, categoryName) ||
+                other.categoryName == categoryName) &&
+            (identical(other.initialValue, initialValue) ||
+                other.initialValue == initialValue) &&
+            (identical(other.codePoint, codePoint) ||
+                other.codePoint == codePoint) &&
+            (identical(other.isExpense, isExpense) ||
+                other.isExpense == isExpense) &&
             const DeepCollectionEquality().equals(other._logs, _logs));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(id),
-      const DeepCollectionEquality().hash(categoryName),
-      const DeepCollectionEquality().hash(initialValue),
-      const DeepCollectionEquality().hash(codePoint),
-      const DeepCollectionEquality().hash(isExpense),
-      const DeepCollectionEquality().hash(_logs));
+  int get hashCode => Object.hash(runtimeType, id, categoryName, initialValue,
+      codePoint, isExpense, const DeepCollectionEquality().hash(_logs));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of Category
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  _$$_CategoryCopyWith<_$_Category> get copyWith =>
-      __$$_CategoryCopyWithImpl<_$_Category>(this, _$identity);
+  @pragma('vm:prefer-inline')
+  _$$CategoryImplCopyWith<_$CategoryImpl> get copyWith =>
+      __$$CategoryImplCopyWithImpl<_$CategoryImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_CategoryToJson(this);
+    return _$$CategoryImplToJson(
+      this,
+    );
   }
 }
 
@@ -239,25 +254,29 @@ abstract class _Category extends Category {
       required final double initialValue,
       required final int codePoint,
       required final bool isExpense,
-      final List<int> logs}) = _$_Category;
+      final List<int> logs}) = _$CategoryImpl;
   const _Category._() : super._();
 
-  factory _Category.fromJson(Map<String, dynamic> json) = _$_Category.fromJson;
+  factory _Category.fromJson(Map<String, dynamic> json) =
+      _$CategoryImpl.fromJson;
 
   @override
-  int get id => throw _privateConstructorUsedError;
+  int get id;
   @override
-  String get categoryName => throw _privateConstructorUsedError;
+  String get categoryName;
   @override
-  double get initialValue => throw _privateConstructorUsedError;
+  double get initialValue;
   @override
-  int get codePoint => throw _privateConstructorUsedError;
+  int get codePoint;
   @override
-  bool get isExpense => throw _privateConstructorUsedError;
+  bool get isExpense;
   @override
-  List<int> get logs => throw _privateConstructorUsedError;
+  List<int> get logs;
+
+  /// Create a copy of Category
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
-  _$$_CategoryCopyWith<_$_Category> get copyWith =>
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$CategoryImplCopyWith<_$CategoryImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

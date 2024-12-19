@@ -6,17 +6,20 @@ part of 'category.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_Category _$$_CategoryFromJson(Map<String, dynamic> json) => _$_Category(
-      id: json['id'] as int? ?? -1,
+_$CategoryImpl _$$CategoryImplFromJson(Map<String, dynamic> json) =>
+    _$CategoryImpl(
+      id: (json['id'] as num?)?.toInt() ?? -1,
       categoryName: json['categoryName'] as String,
       initialValue: (json['initialValue'] as num).toDouble(),
-      codePoint: json['codePoint'] as int,
+      codePoint: (json['codePoint'] as num).toInt(),
       isExpense: json['isExpense'] as bool,
-      logs: (json['logs'] as List<dynamic>?)?.map((e) => e as int).toList() ??
+      logs: (json['logs'] as List<dynamic>?)
+              ?.map((e) => (e as num).toInt())
+              .toList() ??
           const [],
     );
 
-Map<String, dynamic> _$$_CategoryToJson(_$_Category instance) =>
+Map<String, dynamic> _$$CategoryImplToJson(_$CategoryImpl instance) =>
     <String, dynamic>{
       'id': instance.id,
       'categoryName': instance.categoryName,
