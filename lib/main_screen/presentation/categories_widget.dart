@@ -5,33 +5,28 @@ import 'package:budgetbuddy/models/categories/shared/providers.dart';
 import 'package:budgetbuddy/models/logs/shared/providers.dart';
 import 'package:circle_list/circle_list.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-class CategoriesWidget extends ConsumerStatefulWidget {
-  const CategoriesWidget({
-    super.key,
-    required this.isExpenseMode,
-    required this.onPressed,
-  });
-
+class CategoriesWidget extends HookConsumerWidget {
   final void Function()? onPressed;
   final bool isExpenseMode;
-  @override
-  ConsumerState<CategoriesWidget> createState() => _MainPageBodyState();
-}
-
-class _MainPageBodyState extends ConsumerState<CategoriesWidget> {
-  @override
-  void initState() {
-    super.initState();
-    Future.microtask(() {
-      ref.read(categoryNotifierProvider.notifier).fetchExpenses();
-      ref.read(logNotifierProvider.notifier).fetchLogs();
-    });
-  }
+  const CategoriesWidget({
+    super.key,
+    this.onPressed,
+    required this.isExpenseMode,
+  });
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    useEffect(
+      () {
+        ref.read(categoryNotifierProvider.notifier).fetchExpenses();
+        ref.read(logNotifierProvider.notifier).fetchLogs();
+        return null;
+      },
+      [],
+    );
     final size = MediaQuery.of(context).size;
     final categoryState = ref.watch(categoryNotifierProvider);
     return Column(
@@ -40,18 +35,18 @@ class _MainPageBodyState extends ConsumerState<CategoriesWidget> {
       children: categoryState.maybeMap(
         orElse: () => [const CircularProgressIndicator()],
         done: (_) {
-          var total = 0.0;
-          var budget = 0.0;
+          final budget = useState(0.0);
+          final total = useState(0.0);
           for (final category in _.category) {
-            if (category.isExpense == widget.isExpenseMode) {
-              total += category.initialValue;
+            if (category.isExpense == isExpenseMode) {
+              total.value += category.initialValue;
             }
           }
           for (final category in _.category) {
             if (category.isExpense == true) {
-              budget -= category.initialValue;
+              budget.value -= category.initialValue;
             } else {
-              budget += category.initialValue;
+              budget.value += category.initialValue;
             }
           }
           return [
@@ -62,9 +57,9 @@ class _MainPageBodyState extends ConsumerState<CategoriesWidget> {
                     foregroundColor: Colors.white70,
                     shape: const CircleBorder(),
                     minimumSize: Size.fromRadius(size.width / 4)),
-                onPressed: widget.onPressed,
+                onPressed: onPressed,
                 child: Text(
-                  '${widget.isExpenseMode ? 'Expenses' : 'Incomes'}\n\$$total',
+                  '${isExpenseMode ? 'Expenses' : 'Incomes'}\n\$${total.value}',
                   textAlign: TextAlign.center,
                   style: const TextStyle(fontSize: 25),
                 ),
@@ -75,17 +70,17 @@ class _MainPageBodyState extends ConsumerState<CategoriesWidget> {
               children: [
                 if (_.category.isNotEmpty)
                   for (final category in _.category)
-                    if (category.isExpense == widget.isExpenseMode)
+                    if (category.isExpense == isExpenseMode)
                       MenuItemIcon(
                         category: category,
                         onLongPress: () => showDialog(
                           context: context,
                           builder: (context) => EditOrDeleteCategory(
-                            isExpenseMode: widget.isExpenseMode,
+                            isExpenseMode: isExpenseMode,
                             category: category,
                           ),
                         ),
-                        isExpenseMode: widget.isExpenseMode,
+                        isExpenseMode: isExpenseMode,
                       ),
                 IconButton(
                   iconSize: size.width / 10,
@@ -93,7 +88,7 @@ class _MainPageBodyState extends ConsumerState<CategoriesWidget> {
                     showDialog(
                       context: context,
                       builder: (context) => CreateCategoryDialog(
-                        isExpenseMode: widget.isExpenseMode,
+                        isExpenseMode: isExpenseMode,
                       ),
                     );
                   },
@@ -103,13 +98,13 @@ class _MainPageBodyState extends ConsumerState<CategoriesWidget> {
             ),
             const SizedBox(height: 30),
             Text(
-              budget.isNegative
-                  ? 'Balance: -\$${budget.abs()}'
-                  : 'Balance: \$${budget.abs()}',
+              budget.value.isNegative
+                  ? 'Balance: -\$${budget.value.abs()}'
+                  : 'Balance: \$${budget.value.abs()}',
               textAlign: TextAlign.center,
               style: TextStyle(
                   fontSize: 25,
-                  color: budget.isNegative ? Colors.red : Colors.green),
+                  color: budget.value.isNegative ? Colors.red : Colors.green),
             ),
           ];
         },
