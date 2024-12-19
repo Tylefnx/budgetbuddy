@@ -1,6 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:budgetbuddy/core/presentation/app_textfield.dart';
 import 'package:budgetbuddy/models/categories/domain/category.dart';
+import 'package:budgetbuddy/models/categories/shared/providers.dart';
 import 'package:budgetbuddy/models/logs/domain/logs_with_dates.dart';
 import 'package:budgetbuddy/models/logs/shared/providers.dart';
 import 'package:flutter/material.dart';
@@ -110,7 +111,7 @@ class SubmitButton extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     return ElevatedButton(
       style: ElevatedButton.styleFrom(backgroundColor: Colors.white24),
-      onPressed: () {
+      onPressed: () async {
         if (double.tryParse(amount) == null) {
           ScaffoldMessenger.of(context).showSnackBar(
             const SnackBar(
@@ -118,6 +119,15 @@ class SubmitButton extends ConsumerWidget {
             ),
           );
         } else if (option == 0) {
+          await ref.read(categoryNotifierProvider.notifier).updateCategory(
+                Category(
+                  categoryName: category.categoryName,
+                  initialValue: category.initialValue + double.parse(amount),
+                  codePoint: category.codePoint,
+                  isExpense: category.isExpense,
+                  id: category.id,
+                ),
+              ); //TODO: asdf
           List<int> list = category.logs.toList();
           final log = LogWithDate(
             categoryId: category.id,
