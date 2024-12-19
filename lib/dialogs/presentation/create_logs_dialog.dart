@@ -1,4 +1,3 @@
-
 import 'package:auto_route/auto_route.dart';
 import 'package:budgetbuddy/core/presentation/app_textfield.dart';
 import 'package:budgetbuddy/models/categories/domain/category.dart';
@@ -10,10 +9,10 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 class CreateLogDialog extends HookWidget {
   const CreateLogDialog({
-    Key? key,
+    super.key,
     required this.category,
     required this.isExpenseMode,
-  }) : super(key: key);
+  });
 
   final Category category;
   final bool isExpenseMode;
@@ -95,12 +94,12 @@ class CreateLogDialog extends HookWidget {
 
 class SubmitButton extends ConsumerWidget {
   const SubmitButton({
-    Key? key,
+    super.key,
     required this.amount,
     required this.category,
     required this.option,
     required this.isExpenseMode,
-  }) : super(key: key);
+  });
 
   final String amount;
   final Category category;
@@ -132,7 +131,7 @@ class SubmitButton extends ConsumerWidget {
 
           ref.read(logNotifierProvider.notifier).createLog(log, category);
           list.add(log.id);
-          AutoRouter.of(context).pop();
+          AutoRouter.of(context).maybePop();
         } else if (option == 1) {
           final log = LogWithDate(
             categoryId: category.id,
@@ -146,7 +145,7 @@ class SubmitButton extends ConsumerWidget {
           ref
               .read(logNotifierProvider.notifier)
               .deleteLogsByDetails(amount, category);
-          AutoRouter.of(context).pop();
+          AutoRouter.of(context).maybePop();
         }
       },
       child: const Text('Add'),
