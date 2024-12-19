@@ -9,10 +9,10 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 class EditOrDeleteCategory extends ConsumerWidget {
   const EditOrDeleteCategory({
-    Key? key,
+    super.key,
     required this.isExpenseMode,
     required this.category,
-  }) : super(key: key);
+  });
 
   final bool isExpenseMode;
   final Category category;
@@ -45,8 +45,8 @@ class EditOrDeleteCategory extends ConsumerWidget {
             }
             print(category.logs);
             notifier.deleteCategory(category);
-            
-            AutoRouter.of(context).pop();
+
+            AutoRouter.of(context).maybePop();
           },
           child: const Text('Delete Category'),
         ),
