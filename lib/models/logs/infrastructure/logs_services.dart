@@ -33,6 +33,7 @@ class LogsServices {
     logList.add(logID);
     categoriesStateNotifier.updateCategory(
       Category(
+        id: category.id,
         categoryName: category.categoryName,
         initialValue: category.initialValue,
         codePoint: category.codePoint,
@@ -49,6 +50,7 @@ class LogsServices {
     logList.remove(id);
     categoriesStateNotifier.updateCategory(
       Category(
+        id: category.id,
         categoryName: category.categoryName,
         initialValue: category.initialValue,
         codePoint: category.codePoint,
