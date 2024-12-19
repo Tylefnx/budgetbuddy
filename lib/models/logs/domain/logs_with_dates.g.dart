@@ -6,17 +6,17 @@ part of 'logs_with_dates.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_LogWithDate _$$_LogWithDateFromJson(Map<String, dynamic> json) =>
-    _$_LogWithDate(
-      id: json['id'] as int? ?? -1,
-      categoryId: json['categoryId'] as int? ?? -1,
+_$LogWithDateImpl _$$LogWithDateImplFromJson(Map<String, dynamic> json) =>
+    _$LogWithDateImpl(
+      id: (json['id'] as num?)?.toInt() ?? -1,
+      categoryId: (json['categoryId'] as num?)?.toInt() ?? -1,
       details: json['details'] as String,
       value: (json['value'] as num).toDouble(),
       isExpense: json['isExpense'] as bool,
-      milliSecondsFromEpoch: json['milliSecondsFromEpoch'] as int,
+      milliSecondsFromEpoch: (json['milliSecondsFromEpoch'] as num).toInt(),
     );
 
-Map<String, dynamic> _$$_LogWithDateToJson(_$_LogWithDate instance) =>
+Map<String, dynamic> _$$LogWithDateImplToJson(_$LogWithDateImpl instance) =>
     <String, dynamic>{
       'id': instance.id,
       'categoryId': instance.categoryId,

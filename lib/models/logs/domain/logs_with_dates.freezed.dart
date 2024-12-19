@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'logs_with_dates.dart';
 
@@ -12,7 +12,7 @@ part of 'logs_with_dates.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 LogWithDate _$LogWithDateFromJson(Map<String, dynamic> json) {
   return _LogWithDate.fromJson(json);
@@ -27,8 +27,12 @@ mixin _$LogWithDate {
   bool get isExpense => throw _privateConstructorUsedError;
   int get milliSecondsFromEpoch => throw _privateConstructorUsedError;
 
+  /// Serializes this LogWithDate to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of LogWithDate
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $LogWithDateCopyWith<LogWithDate> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -37,7 +41,8 @@ mixin _$LogWithDate {
 abstract class $LogWithDateCopyWith<$Res> {
   factory $LogWithDateCopyWith(
           LogWithDate value, $Res Function(LogWithDate) then) =
-      _$LogWithDateCopyWithImpl<$Res>;
+      _$LogWithDateCopyWithImpl<$Res, LogWithDate>;
+  @useResult
   $Res call(
       {int id,
       int categoryId,
@@ -48,58 +53,64 @@ abstract class $LogWithDateCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$LogWithDateCopyWithImpl<$Res> implements $LogWithDateCopyWith<$Res> {
+class _$LogWithDateCopyWithImpl<$Res, $Val extends LogWithDate>
+    implements $LogWithDateCopyWith<$Res> {
   _$LogWithDateCopyWithImpl(this._value, this._then);
 
-  final LogWithDate _value;
   // ignore: unused_field
-  final $Res Function(LogWithDate) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  /// Create a copy of LogWithDate
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = freezed,
-    Object? categoryId = freezed,
-    Object? details = freezed,
-    Object? value = freezed,
-    Object? isExpense = freezed,
-    Object? milliSecondsFromEpoch = freezed,
+    Object? id = null,
+    Object? categoryId = null,
+    Object? details = null,
+    Object? value = null,
+    Object? isExpense = null,
+    Object? milliSecondsFromEpoch = null,
   }) {
     return _then(_value.copyWith(
-      id: id == freezed
+      id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as int,
-      categoryId: categoryId == freezed
+      categoryId: null == categoryId
           ? _value.categoryId
           : categoryId // ignore: cast_nullable_to_non_nullable
               as int,
-      details: details == freezed
+      details: null == details
           ? _value.details
           : details // ignore: cast_nullable_to_non_nullable
               as String,
-      value: value == freezed
+      value: null == value
           ? _value.value
           : value // ignore: cast_nullable_to_non_nullable
               as double,
-      isExpense: isExpense == freezed
+      isExpense: null == isExpense
           ? _value.isExpense
           : isExpense // ignore: cast_nullable_to_non_nullable
               as bool,
-      milliSecondsFromEpoch: milliSecondsFromEpoch == freezed
+      milliSecondsFromEpoch: null == milliSecondsFromEpoch
           ? _value.milliSecondsFromEpoch
           : milliSecondsFromEpoch // ignore: cast_nullable_to_non_nullable
               as int,
-    ));
+    ) as $Val);
   }
 }
 
 /// @nodoc
-abstract class _$$_LogWithDateCopyWith<$Res>
+abstract class _$$LogWithDateImplCopyWith<$Res>
     implements $LogWithDateCopyWith<$Res> {
-  factory _$$_LogWithDateCopyWith(
-          _$_LogWithDate value, $Res Function(_$_LogWithDate) then) =
-      __$$_LogWithDateCopyWithImpl<$Res>;
+  factory _$$LogWithDateImplCopyWith(
+          _$LogWithDateImpl value, $Res Function(_$LogWithDateImpl) then) =
+      __$$LogWithDateImplCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {int id,
       int categoryId,
@@ -110,46 +121,47 @@ abstract class _$$_LogWithDateCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_LogWithDateCopyWithImpl<$Res> extends _$LogWithDateCopyWithImpl<$Res>
-    implements _$$_LogWithDateCopyWith<$Res> {
-  __$$_LogWithDateCopyWithImpl(
-      _$_LogWithDate _value, $Res Function(_$_LogWithDate) _then)
-      : super(_value, (v) => _then(v as _$_LogWithDate));
+class __$$LogWithDateImplCopyWithImpl<$Res>
+    extends _$LogWithDateCopyWithImpl<$Res, _$LogWithDateImpl>
+    implements _$$LogWithDateImplCopyWith<$Res> {
+  __$$LogWithDateImplCopyWithImpl(
+      _$LogWithDateImpl _value, $Res Function(_$LogWithDateImpl) _then)
+      : super(_value, _then);
 
-  @override
-  _$_LogWithDate get _value => super._value as _$_LogWithDate;
-
+  /// Create a copy of LogWithDate
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = freezed,
-    Object? categoryId = freezed,
-    Object? details = freezed,
-    Object? value = freezed,
-    Object? isExpense = freezed,
-    Object? milliSecondsFromEpoch = freezed,
+    Object? id = null,
+    Object? categoryId = null,
+    Object? details = null,
+    Object? value = null,
+    Object? isExpense = null,
+    Object? milliSecondsFromEpoch = null,
   }) {
-    return _then(_$_LogWithDate(
-      id: id == freezed
+    return _then(_$LogWithDateImpl(
+      id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as int,
-      categoryId: categoryId == freezed
+      categoryId: null == categoryId
           ? _value.categoryId
           : categoryId // ignore: cast_nullable_to_non_nullable
               as int,
-      details: details == freezed
+      details: null == details
           ? _value.details
           : details // ignore: cast_nullable_to_non_nullable
               as String,
-      value: value == freezed
+      value: null == value
           ? _value.value
           : value // ignore: cast_nullable_to_non_nullable
               as double,
-      isExpense: isExpense == freezed
+      isExpense: null == isExpense
           ? _value.isExpense
           : isExpense // ignore: cast_nullable_to_non_nullable
               as bool,
-      milliSecondsFromEpoch: milliSecondsFromEpoch == freezed
+      milliSecondsFromEpoch: null == milliSecondsFromEpoch
           ? _value.milliSecondsFromEpoch
           : milliSecondsFromEpoch // ignore: cast_nullable_to_non_nullable
               as int,
@@ -159,8 +171,8 @@ class __$$_LogWithDateCopyWithImpl<$Res> extends _$LogWithDateCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_LogWithDate extends _LogWithDate {
-  const _$_LogWithDate(
+class _$LogWithDateImpl extends _LogWithDate {
+  const _$LogWithDateImpl(
       {this.id = -1,
       this.categoryId = -1,
       required this.details,
@@ -169,8 +181,8 @@ class _$_LogWithDate extends _LogWithDate {
       required this.milliSecondsFromEpoch})
       : super._();
 
-  factory _$_LogWithDate.fromJson(Map<String, dynamic> json) =>
-      _$$_LogWithDateFromJson(json);
+  factory _$LogWithDateImpl.fromJson(Map<String, dynamic> json) =>
+      _$$LogWithDateImplFromJson(json);
 
   @override
   @JsonKey()
@@ -193,39 +205,39 @@ class _$_LogWithDate extends _LogWithDate {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_LogWithDate &&
-            const DeepCollectionEquality().equals(other.id, id) &&
-            const DeepCollectionEquality()
-                .equals(other.categoryId, categoryId) &&
-            const DeepCollectionEquality().equals(other.details, details) &&
-            const DeepCollectionEquality().equals(other.value, value) &&
-            const DeepCollectionEquality().equals(other.isExpense, isExpense) &&
-            const DeepCollectionEquality()
-                .equals(other.milliSecondsFromEpoch, milliSecondsFromEpoch));
+            other is _$LogWithDateImpl &&
+            (identical(other.id, id) || other.id == id) &&
+            (identical(other.categoryId, categoryId) ||
+                other.categoryId == categoryId) &&
+            (identical(other.details, details) || other.details == details) &&
+            (identical(other.value, value) || other.value == value) &&
+            (identical(other.isExpense, isExpense) ||
+                other.isExpense == isExpense) &&
+            (identical(other.milliSecondsFromEpoch, milliSecondsFromEpoch) ||
+                other.milliSecondsFromEpoch == milliSecondsFromEpoch));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(id),
-      const DeepCollectionEquality().hash(categoryId),
-      const DeepCollectionEquality().hash(details),
-      const DeepCollectionEquality().hash(value),
-      const DeepCollectionEquality().hash(isExpense),
-      const DeepCollectionEquality().hash(milliSecondsFromEpoch));
+  int get hashCode => Object.hash(runtimeType, id, categoryId, details, value,
+      isExpense, milliSecondsFromEpoch);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of LogWithDate
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  _$$_LogWithDateCopyWith<_$_LogWithDate> get copyWith =>
-      __$$_LogWithDateCopyWithImpl<_$_LogWithDate>(this, _$identity);
+  @pragma('vm:prefer-inline')
+  _$$LogWithDateImplCopyWith<_$LogWithDateImpl> get copyWith =>
+      __$$LogWithDateImplCopyWithImpl<_$LogWithDateImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_LogWithDateToJson(this);
+    return _$$LogWithDateImplToJson(
+      this,
+    );
   }
 }
 
@@ -236,26 +248,29 @@ abstract class _LogWithDate extends LogWithDate {
       required final String details,
       required final double value,
       required final bool isExpense,
-      required final int milliSecondsFromEpoch}) = _$_LogWithDate;
+      required final int milliSecondsFromEpoch}) = _$LogWithDateImpl;
   const _LogWithDate._() : super._();
 
   factory _LogWithDate.fromJson(Map<String, dynamic> json) =
-      _$_LogWithDate.fromJson;
+      _$LogWithDateImpl.fromJson;
 
   @override
-  int get id => throw _privateConstructorUsedError;
+  int get id;
   @override
-  int get categoryId => throw _privateConstructorUsedError;
+  int get categoryId;
   @override
-  String get details => throw _privateConstructorUsedError;
+  String get details;
   @override
-  double get value => throw _privateConstructorUsedError;
+  double get value;
   @override
-  bool get isExpense => throw _privateConstructorUsedError;
+  bool get isExpense;
   @override
-  int get milliSecondsFromEpoch => throw _privateConstructorUsedError;
+  int get milliSecondsFromEpoch;
+
+  /// Create a copy of LogWithDate
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
-  _$$_LogWithDateCopyWith<_$_LogWithDate> get copyWith =>
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$LogWithDateImplCopyWith<_$LogWithDateImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
