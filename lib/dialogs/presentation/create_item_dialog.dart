@@ -9,9 +9,9 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 class CreateCategoryDialog extends HookWidget {
   const CreateCategoryDialog({
-    Key? key,
+    super.key,
     required this.isExpenseMode,
-  }) : super(key: key);
+  });
 
   final bool isExpenseMode;
   @override
@@ -82,11 +82,11 @@ class CreateCategoryDialog extends HookWidget {
 
 class SubmitButton extends ConsumerWidget {
   const SubmitButton({
-    Key? key,
+    super.key,
     required this.name,
     required this.iconCode,
     required this.isExpenseMode,
-  }) : super(key: key);
+  });
 
   final String name;
   final int iconCode;
@@ -97,15 +97,15 @@ class SubmitButton extends ConsumerWidget {
     return ElevatedButton(
       style: ElevatedButton.styleFrom(backgroundColor: Colors.white24),
       onPressed: () {
-          ref.read(categoryNotifierProvider.notifier).insertExpenses(
-                Category(
-                  codePoint: iconCode,
-                  categoryName: name,
-                  initialValue: 0,
-                  isExpense: isExpenseMode,
-                ),
-              );
-          AutoRouter.of(context).pop();
+        ref.read(categoryNotifierProvider.notifier).insertExpenses(
+              Category(
+                codePoint: iconCode,
+                categoryName: name,
+                initialValue: 0,
+                isExpense: isExpenseMode,
+              ),
+            );
+        AutoRouter.of(context).maybePop();
       },
       child: const Text('Create Category'),
     );
