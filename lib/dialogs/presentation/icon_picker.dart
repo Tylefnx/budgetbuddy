@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 
 class IconPicker extends HookWidget {
-  const IconPicker({Key? key, required this.onIconSelected}) : super(key: key);
+  const IconPicker({super.key, required this.onIconSelected});
   final IconData Function(IconData) onIconSelected;
   @override
   Widget build(BuildContext context) {
@@ -28,7 +28,7 @@ class IconPicker extends HookWidget {
                     iconSize: size.width / 10,
                     icon: const Icon(Icons.shopping_cart),
                     onPressed: () {
-                      AutoRouter.of(context).pop();
+                      AutoRouter.of(context).maybePop();
                       onIconSelected(Icons.shopping_cart);
                     },
                   ),
@@ -36,7 +36,7 @@ class IconPicker extends HookWidget {
                     iconSize: size.width / 10,
                     icon: const Icon(Icons.house_rounded),
                     onPressed: () {
-                      AutoRouter.of(context).pop();
+                      AutoRouter.of(context).maybePop();
                       onIconSelected(Icons.house_rounded);
                     },
                   ),
@@ -44,7 +44,7 @@ class IconPicker extends HookWidget {
                     iconSize: size.width / 10,
                     icon: const Icon(Icons.food_bank_rounded),
                     onPressed: () {
-                      AutoRouter.of(context).pop();
+                      AutoRouter.of(context).maybePop();
                       onIconSelected(Icons.food_bank_rounded);
                     },
                   ),
@@ -52,7 +52,7 @@ class IconPicker extends HookWidget {
                     iconSize: size.width / 10,
                     icon: const Icon(Icons.person),
                     onPressed: () {
-                      AutoRouter.of(context).pop();
+                      AutoRouter.of(context).maybePop();
                       onIconSelected(Icons.person);
                     },
                   ),
@@ -60,7 +60,7 @@ class IconPicker extends HookWidget {
                     iconSize: size.width / 10,
                     icon: const Icon(Icons.school_rounded),
                     onPressed: () {
-                      AutoRouter.of(context).pop();
+                      AutoRouter.of(context).maybePop();
                       onIconSelected(Icons.school_rounded);
                     },
                   ),
@@ -68,7 +68,7 @@ class IconPicker extends HookWidget {
                     iconSize: size.width / 10,
                     icon: const Icon(Icons.directions_bus_filled_rounded),
                     onPressed: () {
-                      AutoRouter.of(context).pop();
+                      AutoRouter.of(context).maybePop();
                       onIconSelected(Icons.directions_bus_filled_rounded);
                     },
                   ),
@@ -76,7 +76,7 @@ class IconPicker extends HookWidget {
                     iconSize: size.width / 10,
                     icon: const Icon(Icons.car_repair),
                     onPressed: () {
-                      AutoRouter.of(context).pop();
+                      AutoRouter.of(context).maybePop();
                       onIconSelected(Icons.car_repair);
                     },
                   ),
