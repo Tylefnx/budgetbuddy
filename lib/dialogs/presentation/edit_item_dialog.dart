@@ -10,10 +10,10 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 class EditCategoryDialog extends HookWidget {
   const EditCategoryDialog({
-    Key? key,
+    super.key,
     required this.category,
     required this.isExpenseMode,
-  }) : super(key: key);
+  });
 
   final Category category;
   final bool isExpenseMode;
@@ -91,13 +91,13 @@ class EditCategoryDialog extends HookWidget {
 
 class SubmitButton extends ConsumerWidget {
   const SubmitButton({
-    Key? key,
+    super.key,
     required this.name,
     required this.id,
     required this.amount,
     required this.iconCode,
     required this.isExpenseMode,
-  }) : super(key: key);
+  });
 
   final String name;
   final String amount;
@@ -123,7 +123,7 @@ class SubmitButton extends ConsumerWidget {
                   isExpense: isExpenseMode,
                 ),
               );
-          AutoRouter.of(context).pop();
+          AutoRouter.of(context).maybePop();
         }
       },
       child: const Text('Edit Category'),
