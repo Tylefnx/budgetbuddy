@@ -9,15 +9,14 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 class ChangeAmountDialog extends HookWidget {
   const ChangeAmountDialog({
-    Key? key,
+    super.key,
     required this.category,
     required this.isExpenseMode,
-  }) : super(key: key);
+  });
 
   final Category category;
   final bool isExpenseMode;
   @override
-  
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
 
@@ -57,7 +56,6 @@ class ChangeAmountDialog extends HookWidget {
                   radius: size.width / 15,
                   child: IconButton(
                     iconSize: size.width / 15,
-
                     icon: Icon(icon.value),
                     onPressed: () {
                       showDialog(
@@ -93,13 +91,13 @@ class ChangeAmountDialog extends HookWidget {
 
 class SubmitButton extends ConsumerWidget {
   const SubmitButton({
-    Key? key,
+    super.key,
     required this.name,
     required this.id,
     required this.amount,
     required this.iconCode,
     required this.isExpenseMode,
-  }) : super(key: key);
+  });
 
   final String name;
   final String amount;
@@ -125,7 +123,7 @@ class SubmitButton extends ConsumerWidget {
                   isExpense: isExpenseMode,
                 ),
               );
-          AutoRouter.of(context).pop();
+          context.maybePop();
         }
       },
       child: const Text('Edit Category'),
