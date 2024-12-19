@@ -34,7 +34,6 @@ class _MainPageBodyState extends ConsumerState<CategoriesWidget> {
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
     final categoryState = ref.watch(categoryNotifierProvider);
-    final logsState = ref.watch(categoryNotifierProvider);
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -60,7 +59,8 @@ class _MainPageBodyState extends ConsumerState<CategoriesWidget> {
               childrenPadding: 10,
               centerWidget: TextButton(
                 style: TextButton.styleFrom(
-                    foregroundColor: Colors.white70, shape: const CircleBorder(),
+                    foregroundColor: Colors.white70,
+                    shape: const CircleBorder(),
                     minimumSize: Size.fromRadius(size.width / 4)),
                 onPressed: widget.onPressed,
                 child: Text(
@@ -120,9 +120,9 @@ class _MainPageBodyState extends ConsumerState<CategoriesWidget> {
 
 class SelectDateTypeDropdownField extends StatelessWidget {
   const SelectDateTypeDropdownField({
-    Key? key,
+    super.key,
     required this.onChanged,
-  }) : super(key: key);
+  });
 
   final void Function(int?) onChanged;
   @override
